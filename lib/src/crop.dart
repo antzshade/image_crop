@@ -182,7 +182,7 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
             key: _surfaceKey,
             behavior: HitTestBehavior.opaque,
             onScaleStart: _isEnabled ? _handleScaleStart : null,
-            // onScaleUpdate: _isEnabled ? _handleScaleUpdate : null,
+            onScaleUpdate: _isEnabled ? _handleScaleUpdate : null,
             onScaleEnd: _isEnabled ? _handleScaleEnd : null,
             child: CustomPaint(
               painter: _CropPainter(
@@ -551,6 +551,7 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
     }
 
     if (_action == _CropAction.cropping) {
+      return;
       final boundaries = _boundaries;
       if (boundaries == null) {
         return;
