@@ -176,11 +176,13 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
   Widget build(BuildContext context) => ConstrainedBox(
         constraints: const BoxConstraints.expand(),
         child: Listener(
+          onPointerDown: (event) => pointers++,
+          onPointerUp: (event) => pointers = 0,
           child: GestureDetector(
             key: _surfaceKey,
             behavior: HitTestBehavior.opaque,
             onScaleStart: _isEnabled ? _handleScaleStart : null,
-            onScaleUpdate: _isEnabled ? _handleScaleUpdate : null,
+            // onScaleUpdate: _isEnabled ? _handleScaleUpdate : null,
             onScaleEnd: _isEnabled ? _handleScaleEnd : null,
             child: CustomPaint(
               painter: _CropPainter(
